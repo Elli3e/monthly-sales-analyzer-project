@@ -21,31 +21,60 @@ sales_data = [
     {"day": 19, "product_a": 229, "product_b": 133, "product_c": 241},
     {"day": 20, "product_a": 210, "product_b": 57, "product_c": 324}
 ]
-
 def total_sales_by_product(data, product_key):
     """Calculates the total sales of a specific product in 30 days."""
-    pass
+    thritydays_sal_a=0
+    for item in data:
+            thritydays_sal_a+=item[product_key]
 
+    return thritydays_sal_a
 
 def average_daily_sales(data, product_key):
     """Calculates the average daily sales of a specific product."""
-    pass
+    sum_daily_b=0
+    for item in data:
+           sum_daily_b+=item[product_key]
+    return sum_daily_b/20
 
 
 def best_selling_day(data):
-    """Finds the day with the highest total sales."""
-    pass
-
+    #  """Finds the day with the highest total sales."""
+        total_day_sale=0
+        highest_total=0
+        for item in data:
+                total_day_sale=item["product_a"]+item["product_b"]+item["product_c"]
+                if  total_day_sale> highest_total:
+                    highest_total=total_day_sale
+                    Day=item["day"]
+        return   Day       
 
 def days_above_threshold(data, product_key, threshold):
     """Counts how many days the sales of a product exceeded a given threshold."""
-    pass
+    days_excedded=0
+    for item in data:
+              if item[product_key]>300:
+                  days_excedded+=1
+    return days_excedded           
 
 
 def top_product(data):
     """Determines which product had the highest total sales in 30 days."""
-    pass
-
+    total_sale_a=0
+    total_sale_b=0
+    total_sale_c=0
+    highest_total_sale=0
+    for item in sales_data:
+        total_sale_a+=item["product_a"]
+        total_sale_b+=item["product_b"]
+        total_sale_c+=item["product_c"]
+   
+    if total_sale_a > max(total_sale_b, total_sale_c) :
+       return "product_a"
+    elif total_sale_b >max(total_sale_a, total_sale_c):
+        return "product_b"
+    elif total_sale_c  > max( total_sale_a, total_sale_b):
+        return "product_c"  
+            
 
 
 # Function tests
